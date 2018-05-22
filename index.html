@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.png">
+
+    <title>Ether Squirrels</title>
+	
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="interface.js"></script>
+    <script src="main.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body bgcolor="#CCCC00"><!--style="background-image:url(squirrelpattern.png)">-->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <!--<span class="close">&times;</span>-->
+        <div id="modal-internal"></div>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="https://discord.gg/7MnG5mS">Discord</a></li>
+            <li role="presentation"><a href="https://etherscan.io/address/0x0057826d01b84775dbc9b3a5ba1152b095988481">Contract</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Ether Squirrel Farm</h3>  <h4 class="text-muted">Crypto Idle Game - no more bots, less inflation</h4> 
+      </div>
+
+      <div class="jumbotron">
+            
+            <p class="lead"></p>
+            
+            
+          <div class="container altcolor">
+              <div class="row">
+                <div class="col-md-4">
+                    <img src="squirrel.png" width="auto" height="150" alt="Squirrel">
+                    
+                    </div>
+                <div class="col-md-6">
+                    <h2><span class="numsquirrel">?</span> Squirrel</h2>
+                    <br>
+                    <h2>Producing <span id="production">?</span> nuts per hour</h2>
+                </div>
+              </div>
+              <div class="row">
+                <p><a id="getfreesquirrel" class="btn btn-lg btn-success invis" onclick="getFreeSquirrel2()" role="button">Get Freeish Squirrel!</a></p>
+		
+              </div>
+          </div>
+          <div class="container altcolor">
+              <div class="row">
+                    <div class="col-md-4" >
+                    </div>
+                    <div class="col-md-8">
+                    <h2><span class="numeggs">0</span> Nuts
+                    <br>
+                    (<span id="timeuntilfull">?</span> until hatchery full)
+                    </h2>
+                    </div>
+              </div>
+              <br><br>
+                <div class="row">
+                    <div class="col-md-4" >
+                        <img src="squirrelegg.png" width="150" height="auto" alt="Egg">
+                    </div>
+                    
+                    <div class="col-md-4"><p><a class="btn btn-lg btn-success" onclick="hatchEggs1(displayTransactionMessage)" role="button">Hatch <span id="hatchsquirrelquantity">?</span> Squirrel</a></p></div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                    <p><a class="btn btn-lg btn-info" onclick="sellEggs(displayTransactionMessage)"  role="button">Sell For <span id="sellprice">?</span></a></p>
+                  </div>
+              </div>
+                <div class="row">
+                    <div class="col-md-4" >
+                    </div>
+                    <div class="col-md-8">
+                        <p><span id="sellsforexample">0 nuts would sell for 0.054</span></p>
+                    </div>
+              </div>
+          </div>
+          <div class="container altcolor">
+              <div class="row">
+                <div class="col-md-4">
+                    <img src="ether.png" width="auto" height="150" alt="Squirrel">
+                    
+                    </div>
+                <div class="col-md-7">
+                    <a class="btn btn-lg btn-info" onclick="buyEggs2()"  role="button">Buy</a>
+                    <h2><span id="eggstobuy">?</span> nuts for </h2><input class="form-control" type="number" style="width: 130px" onchange="updateBuyPrice()" step="0.01" value="0.05" id="ethtospend">
+					<br>(NOTE: this is the default value. Adjust this number up or down to buy different amount of nuts.)
+                </div>
+
+              </div>
+			  <br><br></div>
+			<div class="container altcolor">
+              <div class="row">
+                <div class="col-md-4">
+                    <img src="druid.png" width="150" height="auto" alt="Squirrel">
+                    
+                    </div>
+                <div class="col-md-7">
+                    <a class="btn btn-lg btn-success" onclick="becomeSquirrelmaster(displayTransactionMessage)"  role="button">Become the Owl</a>
+                    <h2>Sacrifice <span id="squirrelmasterprice">?</span> Squirrels</h2>
+					<h4><br>The next sacrifice will require 100,000 more squirrels.<span id="currentsquirrelmaster"></span></h4>
+					<br>(NOTE: if you have nuts, some of them will disappear when you sacrifice squirrels. Make sure to hatch first!)
+                </div>
+              </div>
+          </div>
+      
+        
+      </div>
+      
+
+     
+      <div class="row marketing" style="color:#ffbf00;">
+        <div class="col-lg-6">
+          <h4>Earn Ethereum Farming Squirrel!</h4>
+          <p>Ether Squirrel Farm is the #1 squirrel farming simulator and idle game on the blockchain. The more squirrel you have, the more nuts they lay (each squirrel lays at a rate of 1 per day). Hatch more squirrel with your nuts to multiply your production, or cash them out for Ethereum!</p>
+
+
+          <h4>Powered by Metamask</h4>
+          <p>This game requires <a href="https://metamask.io/">Metamask</a></p>
+		  
+		  
+        </div>
+
+        <div class="col-lg-6">
+            <h4>Squirrels Are Frail Technology</h4>
+          <p>To prevent inflation, Squirrel Farms have several tricks over their competitors. Squirrels are attached to their progeny and one third of your nest will die if you sell your nuts. Those willing to make the greatest sacrifice can become the Owl, and collect tribute on every nut sale.</p>
+          
+            <h4>Referrals</h4>
+          <p>Earn <b>20%</b> the number of all nuts hatched by anyone who starts playing using your link: <a onclick="copyRef()" id="playerreflink">?</span></a></p>
+          
+        <input style="display:none;" type="text" value="Hello Worldfdgerh" id="copytextthing"> 
+		</input>
+        </div>
+        
+      </div>
+
+      <footer class="footer">
+	  
+		<p>Copyright: Gesualdo Otero Arce</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+        main()
+    </script>
+  </body>
+
+</html>
