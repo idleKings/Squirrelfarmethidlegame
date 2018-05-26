@@ -413,6 +413,18 @@ abi=[
 		"type": "constructor"
 	}
 ];
+
+var web3;
+
+	 if(typeof window.web3 !== "undefined" && typeof window.web3.currentProvider !== "undefined") {
+         web3 = new Web3(window.web3.currentProvider);
+      } else {
+      web3 = new Web3();
+		
+		web3.setProvider(new web3.providers.HttpProvider('https://mainnet.infura.io/uwEccFsRIgwJGznPQLDN'));
+		
+      }
+
 contractAddress="0x0057826d01b84775dbc9b3a5ba1152b095988481";
 
 function buyEggs(eth,callback){
